@@ -1,0 +1,17 @@
+{%extends 'polls/index.html'%}
+{%block content%}
+<div class="box">
+{%if managers.all%}  
+    
+        <h2 class="title">Manager list</h2>
+        <ul class="company-list">
+            {%for manager in managers%}
+                <li class="company-list-item"><span class="text">{{manager.name}}</span></li>
+            {%endfor%}
+        </ul>
+    
+{%else%}
+    <h2 class="title">Empty</h2>
+</div>
+{%endif%}
+{%endblock%}

@@ -1,0 +1,12 @@
+{%extends 'polls/index.html'%}
+{%block content%}
+    <div class="box">
+        <h2 class="title">Login</h2>
+        <form action="" method="POST">
+            {%csrf_token%}
+            {{form.as_ul}}
+            
+            <input class="create" type="submit" value="Log in">
+        </form>
+    </div>
+{%endblock%}

@@ -1,0 +1,13 @@
+{%extends 'polls/index.html'%}
+{%block content%}
+    <div class='box'>
+        <h2 class="title">Worker list</h2>
+        <ul class="company-list">
+            {%for worker in worker_list%}
+                <li class="company-list-item">
+                    <a class='text' href="{%url 'worker_detail' worker.id%}">{{worker.name}}</a>
+                </li>
+            {%endfor%}
+        </ul>
+    </div>
+{%endblock%}

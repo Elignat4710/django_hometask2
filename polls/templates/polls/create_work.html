@@ -1,0 +1,19 @@
+{%extends 'polls/index.html'%}
+{%block content%}
+<div class="box">
+    {%if perms.polls.add_work%}
+        <h2 class="title">Create work</h2>   
+        <form action="" method="POST">
+            <div class='form'>
+                <ul>
+                    {%csrf_token%}
+                    {{form.as_ul}}
+                </ul>
+                <input class="create" type="submit" value="Create">
+            </div>
+        </form>
+    {%else%}
+    <h2 class="title">Нет прав</h2>
+    {%endif%}
+</div>
+{%endblock%}

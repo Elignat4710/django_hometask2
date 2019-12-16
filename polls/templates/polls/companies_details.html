@@ -1,0 +1,49 @@
+{%extends 'polls/index.html'%}
+{%block menu%}
+    <li><a href="{%url 'manager_list' company.id%}">Manager List</a></li>
+{%endblock%}
+{%block content%}
+<!-- {{perms.polls}} -->
+{%if perms.polls.view_work%}
+{% if company.work_set.all %}
+    <div class = 'box'>
+        <h2 class="title">{{company.name}}</h2>
+        <ul class='company-list'>
+                {% for work in company.work_set.all %}
+                    <li class='company-list-item'>
+                        <span class="text">{{ work.name }}</span>
+                        <ul>
+                            {% if work.workplace_set.all%}
+                            {% for workplace in work.workplace_set.all%}
+                            <ul>
+                                <li class="text">{{ workplace.name }}</li>
+                            </ul>
+                            <ul>
+                                <li class="text">{{ workplace.worker_name}}</li>
+                            </ul>
+                            {% endfor %}
+                            {%else%}
+                                <ul>
+                                    <li class="text">Unidentified workplace</li>
+                                </ul>
+                            {%endif%}
+                            <div class="assign">
+                                <a class="" href="{%url 'assign_worker' company_id=company.id work_id=work.id%}">Assign worker</a>
+                            </div>
+                                
+                            
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+{%endif%}
+        <div class="buttom">
+            <a class='text' href="{% url 'work_create' company.id %}">Create new job</a>
+        </div>
+    </div>
+{%else%}
+<div class="box">
+    <h2 class="title"> У вас нет прав на просмотр данной страницы</h2>
+</div>
+{%endif%}
+{%endblock%}

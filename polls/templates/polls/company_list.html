@@ -1,0 +1,16 @@
+{%extends 'polls/index.html'%}
+{%block title%}Companies list{%endblock%}
+{%block content%}
+    <div class='box'>
+        <h2 class='title'>Companies list</h2>
+        <ul class='company-list'>
+            {%if user.is_authenticated%}
+                {%for company in companies%}
+                    <li class='company-list-item'><a class="text" href="{%url 'company_details' company.pk%}">{{company.name}}</a></li>
+                {%endfor%}
+            {%else%}
+                <h2 class="title">Для просмотра информации войдите в систему</h2>
+            {%endif%}
+        </ul>
+    </div>
+{%endblock%}

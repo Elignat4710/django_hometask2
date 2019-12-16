@@ -1,0 +1,24 @@
+{%extends 'polls/index.html'%}
+{%block content%}
+<div class="box">
+    <h2>Worker name: {{worker.name}}</h2>
+    <ul class="Company-list">
+        {%for worktime in worktimes%}    
+            <li class="company-list-item">
+                
+                <p class="text">Work: {{worktime.work.name}}</p>
+                
+                    <p class="text">Start: {{worktime.date_start|date:"SHORT_DATE_FORMAT"}}</p>
+                    <p class="text">End: {{worktime.date_end|date:"SHORT_DATE_FORMAT"}}</p>
+                    <p class="text">Status: {{worktime.status}}</p>
+                
+            </li>
+        {%endfor%}
+    
+    </ul>    
+    <div class="create">
+        <a href="{%url 'worktime_create' worker.id%}" class="text">Create time</a>
+    </div>
+    
+</div>
+{%endblock%}

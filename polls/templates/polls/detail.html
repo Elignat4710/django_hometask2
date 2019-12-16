@@ -1,0 +1,19 @@
+<h2> {{ company.name }}</h2>
+
+{% if company.work_set.all%}
+    <ul>
+        {% for work in company.work_set.all %}
+            <li>
+                {{ work.name }}
+                <ul>
+                    {% for workplace in work.workplace_set.all%}
+                    <li>{{ workplace.name }}</li>
+                    <ul>
+                        <li>{{ workplace.worker_name}}</li>
+                    </ul>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
